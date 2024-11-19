@@ -17,6 +17,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 sectionFilter.appendChild(option);
             });
         };
+        const compare = () => {
+            const sections = [...new Set(data.map(student => student.section || 'N/A'))].sort();
+            sectionFilter.innerHTML = '<option value="all">compare</option>';
+            sections.forEach(section => {
+                const option = document.createElement('option');
+                option.value = section;
+                option.textContent = section;
+                sectionFilter.appendChild(option);
+            });
+        };
 
         // Function to export data to CSV
         const exportToCSV = (data) => {
